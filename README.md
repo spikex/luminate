@@ -87,7 +87,7 @@ consistent, endpoints can be implement with a bit of
 meta-programming. ```Luminate::Base``` provides a helper method,
 ```def_endpoints``` to do this. It takes the API's *Server Servlet*
 name and the list of methods. See
-(lib/luminate/constituent.rb)[https://github.com/spikex/luminate/blob/master/lib/luminate/constituent.rb]
+[lib/luminate/constituent.rb](https://github.com/spikex/luminate/blob/master/lib/luminate/constituent.rb)
 for an example.
 
 Got changes?
