@@ -1,6 +1,7 @@
 # Luminate
 
-TODO: Write a gem description
+This gem provides Ruby bindings for the
+[Luminate Online Server APIs](http://open.convio.com/api/#main).
 
 ## Installation
 
@@ -18,11 +19,65 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Require the gem (or let bundler do it for you) and configure as
+follows:
+
+```ruby
+require 'luminate'
+Luminate.configure do |config|
+  config.url          = 'https://secure3.convio.net'
+  config.organization = 'your-organization
+  config.api_key      = 'your-api-key'
+  config.api_login    = 'your-api-login-name'
+  config.api_password = 'your-api-password'
+end
+```
+
+The URL is typically https://secure2.convio.net or
+https://secure3.convio.net. The organization is the short name Convio
+uses to identify you. Both of these can be extracted from the URL of
+your Admin panel.
+
+You will need to configure the API key, login name, and, password in
+the Admin. Some endpoints are disabled by default, so be sure to check
+the documentation.
+
+The binding are implemented as class level methods with one class per
+API. The method names are underscorized version of Luminate's names.
+To test you settings try the
+[Constituent isEmailValid method](http://open.convio.com/api/#constituent_api.isEmailValid_method.html) (which simply checks the pattern of an email for validity).
+
+```ruby
+constituent = Luminate::Constituent
+response = constituent.is_email_valid(email: 'spike@example.com')
+ => {"isEmailValidResponse"=>{"valid"=>"true"}}
+```
+
+The response value is a [Map](https://github.com/ahoward/map), which
+is a hash-like object that also provides methods to access the values.
+
+```ruby
+response['isEmailValidResponse']
+ => {"valid"=>"true"}
+ response.isEmailValidResponse
+ => {"valid"=>"true"}
+ response.isEmailValidResponse.valid
+ => "true"
+```
 
 ## Contributing
 
-1. Fork it ( http://github.com/<my-github-username>/luminate/fork )
+This is version 0.1.0, I have only implement endpoints I'm actually
+using and have (manually) tested. Since the interface is simple and
+consistent, endpoints can be implement with a bit of
+meta-programming. ```Luminate::Base``` provides a helper method,
+```def_endpoints``` to do this. It takes the API's *Server Servlet*
+name and the list of methods. See ```lib/constituent.rb``` for an
+example.
+
+Got changes?
+
+1. Fork it ( http://github.com/spike/luminate/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
