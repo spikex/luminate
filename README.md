@@ -26,7 +26,7 @@ follows:
 require 'luminate'
 Luminate.configure do |config|
   config.url          = 'https://secure3.convio.net'
-  config.organization = 'your-organization
+  config.organization = 'your-organization'
   config.api_key      = 'your-api-key'
   config.api_login    = 'your-api-login-name'
   config.api_password = 'your-api-password'
@@ -36,16 +36,21 @@ end
 The URL is typically https://secure2.convio.net or
 https://secure3.convio.net. The organization is the short name Convio
 uses to identify you. Both of these can be extracted from the URL of
-your Admin panel.
+your Admin panel:
 
-You will need to configure the API key, login name, and, password in
+```
+https://secure2.convio.net/<organization>/admin...
+```
+
+You will need to configure the API key, login name, and password in
 the Admin. Some endpoints are disabled by default, so be sure to check
 the documentation.
 
-The binding are implemented as class level methods with one class per
+The bindings are implemented as class level methods with one class per
 API. The method names are underscorized version of Luminate's names.
-To test you settings try the
-[Constituent isEmailValid method](http://open.convio.com/api/#constituent_api.isEmailValid_method.html) (which simply checks the pattern of an email for validity).
+
+To test your settings try the
+[Constituent isEmailValid method](http://open.convio.com/api/#constituent_api.isEmailValid_method.html) (which simply checks the pattern of an email for validity):
 
 ```ruby
 constituent = Luminate::Constituent
@@ -53,8 +58,8 @@ response = constituent.is_email_valid(email: 'spike@example.com')
  => {"isEmailValidResponse"=>{"valid"=>"true"}}
 ```
 
-The response value is a [Map](https://github.com/ahoward/map), which
-is a hash-like object that also provides methods to access the values.
+The response value is a [Map](https://github.com/ahoward/map), a
+hash-like object that also provides methods to access the values.
 
 ```ruby
 response['isEmailValidResponse']
@@ -64,6 +69,15 @@ response['isEmailValidResponse']
  response.isEmailValidResponse.valid
  => "true"
 ```
+
+## Currently implemented methods
+
+See (Contributing)[#contributing] for how to add more.
+
+* [Constituent: getUser](http://open.convio.com/api/#constituent_api.getUser_method.html)
+* [Constituent: getUserTransactions](http://open.convio.com/api/#constituent_api.getUserTransactions_method.html)
+* [Constituent: isEmailValid](http://open.convio.com/api/#constituent_api.isEmailValid_method.html)
+* [Donation: addOfflineDonation](http://open.convio.com/api/#donation_api.addOfflineDonation_method.html)
 
 ## Contributing
 
