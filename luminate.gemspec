@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["spike@indra.com"]
   spec.summary       = %q{Ruby Gem for accessing the Convio's Luminate Online Server APIs}
   spec.description   = %q{Access the Convio's Luminate Online Server APIs http://open.convio.com/api}
-  spec.homepage      = "https://github.com/spike/luminate"
+  spec.homepage      = "https://github.com/spikex/luminate"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
