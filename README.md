@@ -72,7 +72,7 @@ response['isEmailValidResponse']
 
 ## Currently implemented methods
 
-See (Contributing)[#contributing] for how to add more.
+See [Contributing](#contributing) for how to add more.
 
 * [Constituent: getUser](http://open.convio.com/api/#constituent_api.getUser_method.html)
 * [Constituent: getUserTransactions](http://open.convio.com/api/#constituent_api.getUserTransactions_method.html)
